@@ -20,4 +20,8 @@ class Category extends Model
         'updated_at', 'created_at',
     ];
 
+    public function items()
+    {
+        return $this->hasMany(Product::class); // Define the "hasMany" relationship to Item model
+    }
 }
