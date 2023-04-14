@@ -51,13 +51,13 @@ class ProductController extends BaseController
 
     public function show($id)
     {
-        $product = $this->product::find($id);
+        $product = $this->product::with('category')->find($id);
   
         if (!$product) {
             return  $this->sendError('error', 'Product not found.');
         }
    
-        return $this->sendResponse(new ProductResource($product), 'Product Retrieved Successfully.');
+        return $this->sendResponse($product, 'Product Retrieved Successfully.');
     }
 
     public function update(Request $request, $id)

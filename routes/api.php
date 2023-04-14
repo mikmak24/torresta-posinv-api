@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\CategoryController;
 use App\Http\Controllers\API\ProductController;
-
+use App\Http\Controllers\API\OrderController;
 
 
 /*
@@ -45,6 +45,15 @@ Route::middleware('auth:api')->group( function () {
         Route::put('{id}', [ProductController::class, 'update']); //Update Specific Product
         Route::delete('{id}', [ProductController::class, 'destroy']); //Delete Specific Product
     });
+
+    //orders
+    Route::group(['prefix' => 'order'], function () {
+        Route::get('', [OrderController::class, 'index']); //Retrieved all Products
+        Route::get('find/{id}', [OrderController::class, 'show']); //Retrieved specific Product
+        Route::post('store', [OrderController::class, 'store']); //Create New Product
+        // Route::put('{id}', [ProductController::class, 'update']); //Update Specific Product
+        // Route::delete('{id}', [ProductController::class, 'destroy']); //Delete Specific Product
+    });   
 
 
 

@@ -26,7 +26,7 @@ class Product extends Model
 
     public static function generateCode()
     {
-        $code = 'PRODUCT' . mt_rand(100000, 999999); // Generate a random 6-digit number
+        $code = 'PRD' . mt_rand(100000, 999999); // Generate a random 6-digit number
 
         // Check if the code already exists
         if (self::where('product_code', $code)->exists()) {
